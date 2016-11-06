@@ -16,6 +16,7 @@ body{
   border:none;
   color:white;
   opacity: 0.9;
+
 }
 .btn
 {
@@ -36,27 +37,57 @@ body{
   border-left-style: groove;
   border-left-color: #dc595e;
   border-width: 5px;
-  padding: 5px;
-  height: 50px;
+  height: 60px;
   color: black;
-  background-color:white;
+  background-color:#F2FF9C;
   color:black;
-}
 
+}
+.tasks:hover
+{
+  border-left-style: groove;
+  border-left-color: green;
+
+  background-color:#ABFFA9;
+  color:black;
+
+}
+.check{
+  position: absolute;
+  margin-top: 15px;
+  margin-left: 15px;
+}
 .c_tasks
 {
   border-left-style: groove;
   border-left-color: lightgreen;
   border-width: 5px;
-  padding: 5px;
-  height: 50px;
-  color: black;
-  background-color: white;
+  height: 60px;
+background-color:#ABFFA9;
+  color:black;
+}
+.c_tasks:hover
+{
+  border-left-style: groove;
+  border-left-color: #dc595e;
+
+  background-color:#F2FF9C;
+  color:black;
 
 }
 .nav-color
 {
   color: white;
+}
+.title
+{
+  font-size: 16px;
+
+
+}
+.title:hover
+{
+  text-decoration: line-through;
 }
 
 .footer
@@ -69,7 +100,20 @@ body{
   padding-top:15px;
   margin-top: 90px;
 }
+.text
+{
+  position: absolute;
+  margin-left: 35px;
+  margin-top:7px;
 
+
+}
+.time
+{
+
+  font-size: 12px;
+  font-style: italic;
+}
 .name
 {
 

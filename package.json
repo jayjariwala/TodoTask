@@ -1,0 +1,26 @@
+{
+  "name": "todotask",
+  "version": "1.0.0",
+  "description": "An App that helps your remember your today's task",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jayjariwala/TodoTask.git"
+  },
+  "keywords": [
+    "Task",
+    "To",
+    "do",
+    "app"
+  ],
+  "author": "Jay Jariwala",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/jayjariwala/TodoTask/issues"
+  },
+  "homepage": "https://github.com/jayjariwala/TodoTask#readme"
+}

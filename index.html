@@ -1,7 +1,8 @@
 <html>
 <head>
-  <title>URL Shorter</title>
+  <title>To-do Task</title>
   <link href="css/bootstrap.min.css" rel="stylesheet">
+  <link rel="icon" href="img/logo.png">
   <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
     <link href="https://fonts.googleapis.com/css?family=Ubuntu" rel="stylesheet">
@@ -13,12 +14,14 @@
     <script>
     $(document).ready(function(){
         $(".completedtask").hide();
+
+
     })
 
 
       function abc()
       {
-        if($(".check").is(":checked") == true)
+        if($(".check_main").is(":checked") == true)
         {
           $('.completedtask').show();
           $('.currenttask').hide();
@@ -82,7 +85,7 @@
   <div class="well">
 
     <label class="switch">
-      <input type="checkbox"  class="check" onClick="abc()">
+      <input type="checkbox"  class="check_main" onClick="abc()">
       <div class="slider"></div>
 
     </label>
@@ -90,7 +93,7 @@
       <br/>
 
         <center>
-          <h4> What you have to do today?</h4>
+          <h4> What you want to do today?</h4>
         </center>
     <div class="input-group">
      <input type="text" class="form-control">
@@ -101,25 +104,43 @@
 
   </div>
 
-  </br/>
+
+
+<!--
+<div class="currenttask">
+  <div class="tasks">
+      No Task Found
+  </div>
+</div>
+-->
+
 
 <div class="currenttask">
   <div class="tasks">
+    <form>
 
-      No Task Found
+    <span class="check"><input type="checkbox" class="check"  id="checkbox_id" value="value"/></span><span class="text"><span class="title"><label for="checkbox_id" class="title">Complete Internship Report</label></span>  <br/>
+    <span class="time">Created November 6, 2016 @1:19 pm</span></span>
 
+    </form>
   </div>
+
 </div>
+
 
 <div class="completedtask">
   <div class="c_tasks">
+    <form>
 
-      No Completed Task Found
+    <span class="check"><input type="checkbox" class="check"  id="checkbox_1" checked value="value"/></span><span class="text"><span class="title"><label for="checkbox_1" ><strike>Complete Internship Report</strike></label></span>  <br/>
+    <span class="time">Created November 6, 2016 @1:19 pm</span></span>
 
+    </form>
   </div>
 </div>
 
   </div>
+
 
 
 </div>
