@@ -1,0 +1,179 @@
+<html>
+<head>
+  <title>To-do Task</title>
+  <link href="css/bootstrap.min.css" rel="stylesheet">
+  <link rel="icon" href="img/logo.png">
+  <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <link href="https://fonts.googleapis.com/css?family=Ubuntu" rel="stylesheet">
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="js/bootstrap.min.js"></script>
+    <link href="css/styles.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Arvo|Proza+Libre" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-mfizz/2.3.0/font-mfizz.css" rel="stylesheet">
+    <script>
+    $(document).ready(function(){
+        $(".completedtask").hide();
+
+
+    })
+
+
+      function abc()
+      {
+        if($(".check_main").is(":checked") == true)
+        {
+          $('.completedtask').show();
+          $('.currenttask').hide();
+        }
+        else {
+          $(".completedtask").hide();
+          $('.currenttask').show();
+
+        }
+      }
+
+
+    </script>
+
+
+
+</head>
+<body>
+  <nav class="navbar navbar-default nav-background navbar-fixed-top">
+<div class="container-fluid">
+  <!-- Brand and toggle get grouped for better mobile display -->
+  <div class="navbar-header">
+    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+      <span class="sr-only">Toggle navigation</span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+    </button>
+    <a class="navbar-brand " href="index.html" ><i class="fa fa-thumb-tack nav-color"></i> <b><span class="logo-fonts nav-color"> To-do Task</span></b></a>
+  </div>
+
+  <!-- Collect the nav links, forms, and other content for toggling -->
+  <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+    <ul class="nav navbar-nav">
+
+
+    </ul>
+
+    <ul class="nav navbar-nav navbar-right">
+
+      <li><a href="signup.html" ><span class="nav-color" style="font-family: 'Noto Serif', serif;">About</span></a></li>
+
+    </ul>
+  </div><!-- /.navbar-collapse -->
+</div><!-- /.container-fluid -->
+</nav>
+
+
+<div class="container">
+
+<div class="logo">
+  <center>
+      <img src="img/logo.png" width="400px" class="img img-responsive icons"/>
+  </center>
+</div>
+<br/>
+
+<br/>
+
+
+  <div class="well">
+
+    <label class="switch">
+      <input type="checkbox"  class="check_main" onClick="abc()">
+      <div class="slider"></div>
+
+    </label>
+    <br/>
+      <br/>
+
+        <center>
+          <h4> What you want to do today?</h4>
+        </center>
+        <form action="/todo" method="post">
+
+
+    <div class="input-group">
+
+     <input type="text" class="form-control" name="task">
+     <span class="input-group-btn">
+          <button class="btn btn-default" type="Submit">Post</button>
+     </span>
+
+
+
+  </div>
+</form>
+
+
+<!--
+<div class="currenttask">
+  <div class="tasks">
+      No Task Found
+  </div>
+</div>
+-->
+
+
+<div class="currenttask">
+
+  <div class="tasks">
+    <form action="/todo" method="post">
+
+    <span class="check"><input type="checkbox" class="check"  id="checkbox_id" value="value"/></span><span class="text"><span class="title"><label for="checkbox_id" class="title">Complete Internship Report</label></span>  <br/>
+    <span class="time">Created November 6, 2016 @1:19 pm</span></span>
+
+    </form>
+  </div>
+
+</div>
+
+
+<div class="completedtask">
+  <div class="c_tasks">
+    <form>
+
+    <span class="check"><input type="checkbox" class="check"  id="checkbox_1" checked value="value"/></span><span class="text"><span class="title"><label for="checkbox_1" ><strike>Complete Internship Report</strike></label></span>  <br/>
+    <span class="time">Created November 6, 2016 @1:19 pm</span></span>
+
+    </form>
+  </div>
+</div>
+
+  </div>
+
+
+
+</div>
+
+
+
+
+
+
+
+
+
+
+</div>
+<br/>
+</br/>
+<div class="footer">
+  <center>
+    <span class="name">Developed by Jay Jariwala &copy; 2016</span>
+  </center>
+
+
+
+
+
+</div>
+
+</body>
+
+</html>
