@@ -1,5 +1,7 @@
 var express=require('express');
-var app=express();
+var mongoose=require('mongoose');
+var model = require('./model/todomodel');
+var app = express();
 var bodyParser=require('body-parser');
 var controller=require('./controller/todocontroller');
 var useragent=require('express-useragent');
@@ -17,7 +19,7 @@ app.use(bodyParser.urlencoded({
  * Parses the text as JSON and exposes the resulting object on req.body.
  */
 app.use(bodyParser.json());
-controller(app,useragent);
+controller(app,useragent,mongoose,model);
 
 var port = Number(process.env.PORT || 8081);
 app.listen(port);
