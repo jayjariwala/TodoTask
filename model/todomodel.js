@@ -14,7 +14,8 @@ createSchema : function(mongoose)
   var taskSchema= new Schema({
     user_browser: Object,
     user_task:String,
-    creation_time:String
+    time:String,
+    status:String
   });
 
 return user=mongoose.model('user-task',taskSchema);

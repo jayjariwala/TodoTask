@@ -22,5 +22,8 @@
   "bugs": {
     "url": "https://github.com/jayjariwala/TodoTask/issues"
   },
-  "homepage": "https://github.com/jayjariwala/TodoTask#readme"
+  "homepage": "https://github.com/jayjariwala/TodoTask#readme",
+  "dependencies": {
+    "moment": "^2.16.0"
+  }
 }

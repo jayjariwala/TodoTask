@@ -1,3 +1,4 @@
+
 <html>
 <head>
   <title>To-do Task</title>
@@ -6,6 +7,7 @@
   <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
     <link href="https://fonts.googleapis.com/css?family=Ubuntu" rel="stylesheet">
+    <script src="js/request.js"></script>
     <!-- Include all compiled plugins (below), or include individual files as needed -->
     <script src="js/bootstrap.min.js"></script>
     <link href="css/styles.css" rel="stylesheet">
@@ -98,12 +100,12 @@
         <center>
           <h4> What you want to do today?</h4>
         </center>
-        <form action="/todo" method="post">
+        <form>
 
 
     <div class="input-group">
 
-     <input type="text" class="form-control" name="task">
+     <input type="text" class="form-control" name="task" id="task" >
      <span class="input-group-btn">
           <button class="btn btn-default" type="Submit">Post</button>
      </span>
@@ -125,14 +127,39 @@
 
 <div class="currenttask">
 
-  <div class="tasks">
-    <form action="/todo" method="post">
+  <% if (typeof incomplete !== "undefined")
+  {
+    function formatAMPM(date) {
+        var hours = date.getHours();
+          var minutes = date.getMinutes();
+          var ampm = hours >= 12 ? 'pm' : 'am';
+          hours = hours % 12;
+          hours = hours ? hours : 12; // the hour '0' should be '12'
+          minutes = minutes < 10 ? '0'+minutes : minutes;
+          var strTime = hours + ':' + minutes + ' ' + ampm;
+          return strTime;
+        }
+      console.log(incomplete);
+      for(var i=0; i<incomplete.length;i++)
+      {
 
-    <span class="check"><input type="checkbox" class="check"  id="checkbox_id" value="value"/></span><span class="text"><span class="title"><label for="checkbox_id" class="title">Complete Internship Report</label></span>  <br/>
-    <span class="time">Created November 6, 2016 @1:19 pm</span></span>
+        var date=new Date(parseFloat(incomplete[i].time) * 1000);
+        var newdate=formatAMPM(date);
+  %>
+        <div class="tasks">
 
-    </form>
-  </div>
+
+          <span class="check"><input type="checkbox" class="check"  id="checkbox_id" value="value"/></span><span class="text"><span class="title"><label for="checkbox_id" class="title"><%=incomplete[i].user_task%></label></span>  <br/>
+          <span class="time"><%=date.toLocaleDateString();%>  @<%=newdate%></span></span>
+
+        </div>
+
+
+  <%
+      }
+    }   %>
+
+
 
 </div>
 
