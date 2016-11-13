@@ -100,20 +100,20 @@
         <center>
           <h4> What you want to do today?</h4>
         </center>
-        <form>
 
 
-    <div class="input-group">
+  <div class="input-group">
 
-     <input type="text" class="form-control" name="task" id="task" >
-     <span class="input-group-btn">
-          <button class="btn btn-default" type="Submit">Post</button>
-     </span>
+   <input type="text" class="form-control" name="task" id="task"  >
+   <span class="input-group-btn">
+        <button class="btn btn-default" type="Submit" id="post">Post</button>
+   </span>
+
 
 
 
   </div>
-</form>
+
 
 
 <!--
@@ -129,28 +129,16 @@
 
   <% if (typeof incomplete !== "undefined")
   {
-    function formatAMPM(date) {
-        var hours = date.getHours();
-          var minutes = date.getMinutes();
-          var ampm = hours >= 12 ? 'pm' : 'am';
-          hours = hours % 12;
-          hours = hours ? hours : 12; // the hour '0' should be '12'
-          minutes = minutes < 10 ? '0'+minutes : minutes;
-          var strTime = hours + ':' + minutes + ' ' + ampm;
-          return strTime;
-        }
-      console.log(incomplete);
-      for(var i=0; i<incomplete.length;i++)
+    for(var i=0; i<incomplete.length;i++)
       {
 
-        var date=new Date(parseFloat(incomplete[i].time) * 1000);
-        var newdate=formatAMPM(date);
+
   %>
         <div class="tasks">
 
 
           <span class="check"><input type="checkbox" class="check"  id="checkbox_id" value="value"/></span><span class="text"><span class="title"><label for="checkbox_id" class="title"><%=incomplete[i].user_task%></label></span>  <br/>
-          <span class="time"><%=date.toLocaleDateString();%>  @<%=newdate%></span></span>
+          <span class="time"><%=incomplete[i].time %></span></span>
 
         </div>
 
