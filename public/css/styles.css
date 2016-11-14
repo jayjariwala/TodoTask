@@ -32,16 +32,30 @@ body{
     height:35px;
 
 }
+.currenttask, .completedtask
+{
+    margin-top:14px;
+}
+
 .tasks
 {
+
   border-left-style: groove;
   border-left-color: #dc595e;
   border-width: 5px;
   height: 60px;
   color: black;
   background-color:#F2FF9C;
-  color:black;
 
+}
+.c_tasks
+{
+  border-left-style: groove;
+  border-left-color: lightgreen;
+  border-width: 5px;
+  height: 60px;
+  background-color:#ABFFA9;
+  color:black;
 }
 .tasks:hover
 {
@@ -52,20 +66,6 @@ body{
   color:black;
 
 }
-.check{
-  position: absolute;
-  margin-top: 15px;
-  margin-left: 15px;
-}
-.c_tasks
-{
-  border-left-style: groove;
-  border-left-color: lightgreen;
-  border-width: 5px;
-  height: 60px;
-background-color:#ABFFA9;
-  color:black;
-}
 .c_tasks:hover
 {
   border-left-style: groove;
@@ -75,6 +75,11 @@ background-color:#ABFFA9;
   color:black;
 
 }
+.check{
+  position: absolute;
+  margin-top: 15px;
+  margin-left: 15px;
+}
 .nav-color
 {
   color: white;
@@ -82,8 +87,6 @@ background-color:#ABFFA9;
 .title
 {
   font-size: 16px;
-
-
 }
 .title:hover
 {

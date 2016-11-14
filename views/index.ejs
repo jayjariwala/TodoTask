@@ -153,15 +153,26 @@
 
 
 <div class="completedtask">
-  <div class="c_tasks">
-    <form>
 
-    <span class="check"><input type="checkbox" class="check"  id="checkbox_1" checked value="value"/></span><span class="text"><span class="title"><label for="checkbox_1" ><strike>Complete Internship Report</strike></label></span>  <br/>
-    <span class="time">Created November 6, 2016 @1:19 pm</span></span>
+  <% if(typeof complete !== "undefined"){
 
-    </form>
+  for( var i=0; i < complete.length; i++)
+  {   %>
+
+    <div class="c_tasks">
+
+      <span class="check"><input type="checkbox" class="check"  id="checkbox_1" checked value="value"/></span><span class="text"><span class="title"><label for="checkbox_1" ><strike><%=complete[i].user_task%></strike></label></span>  <br/>
+      <span class="time"><%=complete[i].time %></span></span>
+
+    </div>
+
+
+<%
+  }
+
+  }%>
+
   </div>
-</div>
 
   </div>
 
