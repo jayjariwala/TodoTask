@@ -1,5 +1,33 @@
-$(document).ready(function(){
+function abc()
+{
+  if($(".check_main").is(":checked") == true)
+  {
+    $.ajax({
+      type:"POST",
+      data:{type:"switch"},
+      url:"/completedtask",
+      success: function(data)
+      {
+        console.log("data recieved"+data);
+      },
+      error: function(err)
+      {
+        console.log("something went wrong");
+      }
+    })
+    $('.completedtask').show();
+    $('.currenttask').hide();
+  }
+  else {
+    $(".completedtask").hide();
+    $('.currenttask').show();
 
+  }
+}
+
+
+$(document).ready(function(){
+$(".completedtask").hide();
 
   $('#post').click(function(){
     console.log("it is clicked");

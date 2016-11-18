@@ -1,4 +1,5 @@
 var moment = require('moment');
+var requesttype;
 module.exports = function(app,useragent,mongoose,model)
 {
 
@@ -102,7 +103,8 @@ app.post('/todo',function(req,res){
 
 })
 
-app.post('/completed',function(req,res){
+app.post('/completedtask',function(req,res){
+requesttype = req.body.type;
 
 
 })

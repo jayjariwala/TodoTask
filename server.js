@@ -21,5 +21,5 @@ app.use(bodyParser.urlencoded({
 app.use(bodyParser.json());
 controller(app,useragent,mongoose,model);
 
-var port = Number(process.env.PORT || 8080);
+var port = Number(process.env.PORT || 8082);
 app.listen(port);
