@@ -29,7 +29,9 @@ function findunfinishedTask()
       user_browser:task[i].user_browser,
       user_task:task[i].user_task,
       status:task[i].status,
-      time:moment.unix(task[i].time).format("MMMM DD YYYY @ hh:mm A")
+      time:moment.unix(task[i].time).format("MMMM DD YYYY @ hh:mm A"),
+      id:task[i].time
+
       }
 
     }
@@ -103,9 +105,9 @@ app.post('/todo',function(req,res){
 
 })
 
-app.post('/completedtask',function(req,res){
-requesttype = req.body.type;
+app.post('/completetask',function(req,res){
 
+  console.log("came here");
 
 })
 

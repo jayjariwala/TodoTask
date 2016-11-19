@@ -2,19 +2,7 @@ function abc()
 {
   if($(".check_main").is(":checked") == true)
   {
-    $.ajax({
-      type:"POST",
-      data:{type:"switch"},
-      url:"/completedtask",
-      success: function(data)
-      {
-        console.log("data recieved"+data);
-      },
-      error: function(err)
-      {
-        console.log("something went wrong");
-      }
-    })
+
     $('.completedtask').show();
     $('.currenttask').hide();
   }
@@ -28,7 +16,20 @@ function abc()
 function completetask(value)
 {
   console.log(value);
-  console.log("complete task is being called");
+  $.ajax({
+    type:"POST",
+    data:{id:value},
+    url:"/completetask",
+    success:function(dataobj)
+    {
+      console.log(dataobj);
+    },
+    error: function(err)
+    {
+      console.log("something wrong");
+    }
+
+  });
 }
 
 $(document).ready(function(){
