@@ -13,7 +13,7 @@
     <link href="css/styles.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Arvo|Proza+Libre" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-mfizz/2.3.0/font-mfizz.css" rel="stylesheet">
-  
+
 </head>
 <body>
   <nav class="navbar navbar-default nav-background navbar-fixed-top">
@@ -111,7 +111,7 @@
         <div class="tasks">
 
 
-          <span class="check"><input type="checkbox" class="check"  id="checkbox_id" value="value"/></span><span class="text"><span class="title"><label for="checkbox_id" class="title"><%=incomplete[i].user_task%></label></span>  <br/>
+          <span class="check" %> ><input type="checkbox" class="check"  id=<%='check'+i%> value="" onclick="completetask(<%=i%>)"/></span><span class="text"><span class="title"><label for=<%='check'+i%> class="title"><%=incomplete[i].user_task%></label></span>  <br/>
           <span class="time"><%=incomplete[i].time %></span></span>
 
         </div>
@@ -135,7 +135,7 @@
 
     <div class="c_tasks">
 
-      <span class="check"><input type="checkbox" class="check"  id="checkbox_1" checked value="value"/></span><span class="text"><span class="title"><label for="checkbox_1" ><strike><%=complete[i].user_task%></strike></label></span>  <br/>
+      <span class="check"><input type="checkbox" class="check"   id=<%='discheck'+i%> checked value="value" /></span><span class="text"><span class="title"><label for=<%='discheck'+i %>> <strike><%=complete[i].user_task%></strike></label></span>  <br/>
       <span class="time"><%=complete[i].time %></span></span>
 
     </div>

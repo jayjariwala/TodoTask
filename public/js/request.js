@@ -25,6 +25,11 @@ function abc()
   }
 }
 
+function completetask(value)
+{
+  console.log(value);
+  console.log("complete task is being called");
+}
 
 $(document).ready(function(){
 $(".completedtask").hide();
@@ -63,6 +68,11 @@ $(".completedtask").hide();
 
 
   })
+
+var checkbox=$('.c_tasks:checkbox:checked').val();
+
+console.log("checkbox  value:" +checkbox);
+
 
 
 })
