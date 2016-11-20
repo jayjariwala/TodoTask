@@ -7,26 +7,16 @@ var connection=model.getConnection();
 
 var user=model.createSchema(connection);
 
-module.exports = function(app,useragent)
+//global function
+
+function globalretrivedata(req,res,useragent,reqtype)
 {
-
-
-  var source;
+  var updatedTask =[];
+  var renderdata={};
+  var finishedUpdatedTask=[];
+  source =req.headers['user-agent'];
   // ua has unique browser information
-  var ua;
-
-
-
-  app.get('/',function(req,res){
-
-    var updatedTask =[];
-
-    var finishedUpdatedTask=[];
-    source =req.headers['user-agent'];
-    // ua has unique browser information
-    ua=useragent.parse(source);
-
-
+  ua=useragent.parse(source);
   user.find({user_browser : ua.source,status:"unfinished"},function(err,task){
     if(err) throw err;
     console.log("the task length is"+task.length);
@@ -44,32 +34,60 @@ module.exports = function(app,useragent)
       }
 
     }
-      findfinishedTask();
-  }).sort({'time':-1});
+    user.find({user_browser : ua.source , status:"finished"},function(err,task){
+      if(err) throw err;
 
+      for(var i=0;i<task.length;i++)
+      {
+        finishedUpdatedTask[i] = {
+        user_browser:task[i].user_browser,
+        user_task:task[i].user_task,
+        status:task[i].status,
+        time:moment.unix(task[i].time).format("MMMM DD YYYY @ hh:mm A"),
+        id:task[i].time
+        }
 
-function findfinishedTask()
-{
-  user.find({user_browser : ua.source , status:"finished"},function(err,task){
-    if(err) throw err;
-
-    for(var i=0;i<task.length;i++)
-    {
-      finishedUpdatedTask[i] = {
-      user_browser:task[i].user_browser,
-      user_task:task[i].user_task,
-      status:task[i].status,
-      time:moment.unix(task[i].time).format("MMMM DD YYYY @ hh:mm A")
       }
+      if(reqtype == 'completetask')
+      {
+        console.log("comes in completetask");
+         renderdata={incomplete:updatedTask,complete:finishedUpdatedTask}
+         res.json(renderdata);
+      }
+      else {
+          res.render('index',{incomplete:updatedTask,complete:finishedUpdatedTask});
+      }
+    }).sort({'time':-1});
 
-    }
-     randerdata();
   }).sort({'time':-1});
+
+
+
 }
-function randerdata()
-    {
-      res.render('index',{incomplete:updatedTask,complete:finishedUpdatedTask});
-    }
+
+
+
+
+
+
+
+
+
+module.exports = function(app,useragent)
+{
+
+
+  var source;
+  // ua has unique browser information
+  var ua;
+
+
+
+  app.get('/',function(req,res){
+
+
+globalretrivedata(req,res,useragent);
+
 
 
   });
@@ -123,7 +141,9 @@ app.post('/completetask',function(req,res){
   var id=req.body.id;
   var query={ user_browser:ua.source, time:id}
   user.update(query,{ $set: {time:unixtimestamp, status:"finished" }}, function(data){
-    res.end();
+    var reqtype='completetask'
+    globalretrivedata(req,res,useragent,reqtype);
+
   } )
 
 
