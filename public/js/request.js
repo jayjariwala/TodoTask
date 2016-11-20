@@ -15,7 +15,7 @@ function abc()
 
 function completetask(value)
 {
-  console.log(value);
+
   $.ajax({
     type:"POST",
     data:{id:value},
@@ -54,7 +54,8 @@ $(".completedtask").hide();
           data: formdata,
           success: function(data)
           {
-            $('.currenttask').prepend("<div class='tasks'><span class='check'><input type='checkbox' class='check'  id='checkbox_id' value='value' onclick='completetask("+data.id+")'/></span><span class='text'><span class='title'><label for='checkbox_id' class='title'>"+data.user_task+"</label></span><br/><span class='time'>"+data.time+"</span></span></div>")
+            console.log("timestamp value"+data.t_id);
+            $('.currenttask').prepend("<div class='tasks'><span class='check'><input type='checkbox' class='check'  id='checkbox_id' value='value' onclick='completetask("+data.t_id+")'/></span><span class='text'><span class='title'><label for='checkbox_id' class='title'>"+data.user_task+"</label></span><br/><span class='time'> Created on "+data.time+"</span></span></div>")
             $('#task').val('')
           },
           error: function(err)

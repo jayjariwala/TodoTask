@@ -112,7 +112,7 @@
 
 
           <span class="check" %> ><input type="checkbox" class="check"  id=<%='check'+i%> value="" onclick="completetask(<%=incomplete[i].id%>)"/></span><span class="text"><span class="title"><label for=<%='check'+i%> class="title"><%=incomplete[i].user_task%></label></span>  <br/>
-          <span class="time"><%=incomplete[i].time %></span></span>
+          <span class="time">Created on <%=incomplete[i].time %></span></span>
 
         </div>
 
@@ -136,7 +136,7 @@
     <div class="c_tasks">
 
       <span class="check"><input type="checkbox" class="check"   id=<%='discheck'+i%> checked value="value" /></span><span class="text"><span class="title"><label for=<%='discheck'+i %>> <strike><%=complete[i].user_task%></strike></label></span>  <br/>
-      <span class="time"><%=complete[i].time %></span></span>
+      <span class="time">Finished on <%=complete[i].time %></span></span>
 
     </div>
 

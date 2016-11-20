@@ -2,8 +2,7 @@ var moment = require('moment');
 var model = require('../model/todomodel');
 var mongoose=require('mongoose');
 
-var updatedTask =[];
-var finishedUpdatedTask=[];
+
 var connection=model.getConnection();
 
 var user=model.createSchema(connection);
@@ -18,9 +17,11 @@ module.exports = function(app,useragent)
 
 
 
-
   app.get('/',function(req,res){
 
+    var updatedTask =[];
+
+    var finishedUpdatedTask=[];
     source =req.headers['user-agent'];
     // ua has unique browser information
     ua=useragent.parse(source);
@@ -93,23 +94,23 @@ app.post('/todo',function(req,res){
   }
   else {
     var unixtimestamp = Math.floor((new Date).getTime()/1000);
-
+    var newobj={};
     var todotask = new user({
       user_browser: ua.source,
       user_task:req.body.task,
       time:unixtimestamp,
-      status:"unfinished"
+      status:"unfinished",
     });
 
     todotask.save(function(err){
       if(err) throw err;
       console.log("information stored successfully");
-      todotask.time=moment.unix(todotask.time).format("MMMM DD YYYY @ hh:mm A");
-      todotask.id=unixtimestamp;
-      res.json(todotask);
     })
-
-
+    newobj.user_task=req.body.task;
+    newobj.time=moment.unix(todotask.time).format("MMMM DD YYYY @ hh:mm A");
+    newobj.status=todotask.status;
+    newobj.t_id=todotask.time;
+res.json(newobj);
   }
 
 })
