@@ -1,30 +1,38 @@
 var moment = require('moment');
-var requesttype;
-module.exports = function(app,useragent,mongoose,model)
+var model = require('../model/todomodel');
+var mongoose=require('mongoose');
+
+var updatedTask =[];
+var finishedUpdatedTask=[];
+var connection=model.getConnection();
+
+var user=model.createSchema(connection);
+
+module.exports = function(app,useragent)
 {
 
-  var updatedTask =[];
-  var finishedUpdatedTask=[];
+
   var source;
   // ua has unique browser information
   var ua;
 
-  var connection=model.getConnection();
-  var user=model.createSchema(connection);
+
+
 
   app.get('/',function(req,res){
 
     source =req.headers['user-agent'];
     // ua has unique browser information
     ua=useragent.parse(source);
-    findunfinishedTask();
-function findunfinishedTask()
-{
+
+
   user.find({user_browser : ua.source,status:"unfinished"},function(err,task){
     if(err) throw err;
+    console.log("the task length is"+task.length);
 
     for(var i=0;i<task.length;i++)
     {
+      console.log("goes in");
       updatedTask[i] = {
       user_browser:task[i].user_browser,
       user_task:task[i].user_task,
@@ -38,10 +46,10 @@ function findunfinishedTask()
       findfinishedTask();
   }).sort({'time':-1});
 
-}
+
 function findfinishedTask()
 {
-  user.find({user_browser : ua.source , status:"unfinished"},function(err,task){
+  user.find({user_browser : ua.source , status:"finished"},function(err,task){
     if(err) throw err;
 
     for(var i=0;i<task.length;i++)
@@ -97,6 +105,7 @@ app.post('/todo',function(req,res){
       if(err) throw err;
       console.log("information stored successfully");
       todotask.time=moment.unix(todotask.time).format("MMMM DD YYYY @ hh:mm A");
+      todotask.id=unixtimestamp;
       res.json(todotask);
     })
 
@@ -106,8 +115,16 @@ app.post('/todo',function(req,res){
 })
 
 app.post('/completetask',function(req,res){
+  var unixtimestamp = Math.floor((new Date).getTime()/1000);
+  source =req.headers['user-agent'];
+  // ua has unique browser information
+  ua=useragent.parse(source);
+  var id=req.body.id;
+  var query={ user_browser:ua.source, time:id}
+  user.update(query,{ $set: {time:unixtimestamp, status:"finished" }}, function(data){
+    res.end();
+  } )
 
-  console.log("came here");
 
 })
 

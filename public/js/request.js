@@ -22,7 +22,7 @@ function completetask(value)
     url:"/completetask",
     success:function(dataobj)
     {
-      console.log(dataobj);
+      location.reload();
     },
     error: function(err)
     {
@@ -54,7 +54,7 @@ $(".completedtask").hide();
           data: formdata,
           success: function(data)
           {
-            $('.currenttask').prepend("<div class='tasks'><span class='check'><input type='checkbox' class='check'  id='checkbox_id' value='value'/></span><span class='text'><span class='title'><label for='checkbox_id' class='title'>"+data.user_task+"</label></span><br/><span class='time'>"+data.time+"</span></span></div>")
+            $('.currenttask').prepend("<div class='tasks'><span class='check'><input type='checkbox' class='check'  id='checkbox_id' value='value' onclick='completetask("+data.id+")'/></span><span class='text'><span class='title'><label for='checkbox_id' class='title'>"+data.user_task+"</label></span><br/><span class='time'>"+data.time+"</span></span></div>")
             $('#task').val('')
           },
           error: function(err)
