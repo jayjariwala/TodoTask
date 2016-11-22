@@ -1,6 +1,7 @@
 body{
-  margin-top:30px;
+  margin-top:50px;
   background-color:white;
+font-family: 'Nunito', sans-serif;
 
 }
 .navbar
@@ -9,7 +10,12 @@ body{
 
 }
 
-
+.notasks
+{
+  background-color: white;
+  padding: 5px;
+  color: gray;
+}
 .well
 {
   background-color: white;
@@ -128,7 +134,7 @@ body{
   position: relative;
   margin-top: 35px;
   z-index: 1;
-  width: 120px;
+  width: 140px;
 }
 .well
 {

@@ -4,6 +4,7 @@
   <title>To-do Task</title>
   <link href="css/bootstrap.min.css" rel="stylesheet">
   <link rel="icon" href="img/logo.png">
+  <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
   <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
     <link href="https://fonts.googleapis.com/css?family=Ubuntu" rel="stylesheet">
@@ -26,7 +27,7 @@
       <span class="icon-bar"></span>
       <span class="icon-bar"></span>
     </button>
-    <a class="navbar-brand " href="index.html" ><i class="fa fa-thumb-tack nav-color"></i> <b><span class="logo-fonts nav-color"> To-do Task</span></b></a>
+    <a class="navbar-brand " href="#" ><i class="fa fa-thumb-tack nav-color"></i> <b><span class="logo-fonts nav-color"> To-do Task</span></b></a>
   </div>
 
   <!-- Collect the nav links, forms, and other content for toggling -->
@@ -38,7 +39,7 @@
 
     <ul class="nav navbar-nav navbar-right">
 
-      <li><a href="signup.html" ><span class="nav-color" style="font-family: 'Noto Serif', serif;">About</span></a></li>
+      <li><a href="#" ><span class="nav-color">Jay Jariwala</span></a></li>
 
     </ul>
   </div><!-- /.navbar-collapse -->
@@ -72,7 +73,8 @@
       <br/>
 
         <center>
-          <h4> What you want to do today?</h4>
+          <h2> What you want to do today?</h2>
+
         </center>
 
 
@@ -90,26 +92,36 @@
 
 
 
-<!--
-<div class="currenttask">
-  <div class="tasks">
-      No Task Found
-  </div>
-</div>
--->
-
 
 <div class="currenttask">
 
   <% if (typeof incomplete !== "undefined")
   {
+    if(incomplete.length == 0)
+    {  %>
+      <div class="notask-container">
+
+        <div class="notasks">
+
+          <center>
+
+          </center>
+          <h4>No Task Found</h4>
+            Add a task using form above, or switch the toggle to see completed task
+
+          </div>
+    </div>
+
+<%
+    }
+
     for(var i=0; i<incomplete.length;i++)
       {
 
 
   %>
         <div class="tasks">
-          <span class="check" %> ><input type="checkbox" class="check"  id=<%='check'+i%> value="" onclick="completetask(<%=incomplete[i].id%>)"/></span><span class="text"><span class="title"><label for=<%='check'+i%> class="title"><%=incomplete[i].user_task%></label></span>  <br/>
+          <span class="check" %> ><input type="checkbox" class="check"  id=<%='check'+i%> value="" onclick="completetask(<%=incomplete[i].id%>,' incomplete ')"/></span><span class="text"><span class="title"><label for=<%='check'+i%> class="title"><%=incomplete[i].user_task%></label></span>  <br/>
           <span class="time">Created on <%=incomplete[i].time %></span></span>
 
         </div>
@@ -128,12 +140,32 @@
 
   <% if(typeof complete !== "undefined"){
 
+
+
+    if(complete.length == 0)
+    {  %>
+
+
+        <div class="notasks">
+
+          <center>
+
+          </center>
+          <h4>No History Found</h4>
+            complete some task first and comeback to see the task history
+
+          </div>
+
+
+<%
+    }
+
   for( var i=0; i < complete.length; i++)
   {   %>
 
     <div class="c_tasks">
 
-      <span class="check"><input type="checkbox" class="check"   id=<%='discheck'+i%> checked value="" onclick="incompletetask(<%=complete[i]%>)" /></span><span class="text"><span class="title"><label for=<%='discheck'+i %>> <strike><%=complete[i].user_task%></strike></label></span>  <br/>
+      <span class="check"><input type="checkbox" class="check"   id=<%='discheck'+i%> checked value="" onclick="completetask(<%=complete[i].id%>, ' complete ')" /></span><span class="text"><span class="title"><label for=<%='discheck'+i %>> <strike><%=complete[i].user_task%></strike></label></span>  <br/>
       <span class="time">Finished on <%=complete[i].time %></span></span>
 
     </div>
@@ -166,7 +198,7 @@
 </br/>
 <div class="footer">
   <center>
-    <span class="name">Developed by Jay Jariwala &copy; 2016</span>
+    <span class="name">Developed by Jay Jariwala &copy; 2016 </span>
   </center>
 
 

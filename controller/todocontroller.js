@@ -139,12 +139,32 @@ app.post('/completetask',function(req,res){
   // ua has unique browser information
   ua=useragent.parse(source);
   var id=req.body.id;
+  var reqtype=req.body.reqtype;
+  console.log("recieved id::"+id);
+  console.log("req type"+reqtype);
   var query={ user_browser:ua.source, time:id}
-  user.update(query,{ $set: {time:unixtimestamp, status:"finished" }}, function(data){
-    var reqtype='completetask'
-    globalretrivedata(req,res,useragent,reqtype);
+ if( reqtype == " incomplete ")
+  {
+    console.log("goes in");
+    user.update(query,{ $set: {time:unixtimestamp, status:"finished" }}, function(data){
+      var sendreq='completetask'
+      globalretrivedata(req,res,useragent,sendreq);
 
-  } )
+    } )
+
+  }
+  if( reqtype == " complete ")
+  {
+
+    user.update(query,{ $set: {time:unixtimestamp, status:"unfinished" }}, function(data){
+      var sendreq='completetask'
+      globalretrivedata(req,res,useragent,sendreq);
+
+    } )
+
+  }
+
+
 
 
 })
